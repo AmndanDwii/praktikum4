@@ -24,6 +24,12 @@ class CartModel extends ChangeNotifier {
     }
   }
 
+  void removeFromCart(Product product) {
+    product.quantity = 0;
+    _cart.remove(product);
+    notifyListeners();
+  }
+
   double getTotalPrice() {
     double total = 0.0;
     for (var product in _cart) {
